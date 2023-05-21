@@ -9,6 +9,7 @@
 //    ++ChCount;
 //}
 
+// 문자열에 Ch와 같은 문자가 몇개들어있는지 세어서 리턴해주는 함수
 int ChCount(const char* const _string, char Ch)
 {
     if (nullptr == _string)
@@ -16,63 +17,103 @@ int ChCount(const char* const _string, char Ch)
         return -1;
     }
 
-    int ChCount = 0;
-    while (_string[ChCount])
+    int i = 0;
+    int Count = 0;
+    while (_string[i])
     {
-        char Ch = _string[ChCount];
+        if (_string[i] == Ch) 
+        {
+            Count++;
+        }
 
-        ++ChCount;
+        i++;
     }
 
-    int Count = 0;
-
-    // for문을 돌리는건 당연한거야.
-
-    // Ch와 같은 문자가 몇개들어있는지 세어서 리턴해주는 함수
-    return 0;
+    return Count;
 }
 
+// 문자열의 공백을 없애주는 함수
+// 개인 체감 난이도 상
 void TrimDelete(char* _string)
 {
-    char Ch = 'a';
-    ' ';
-
-    //while ()
-    //{
-    if (Ch == ' ')
+    int i = 0;
+    while (_string[i]) 
     {
-        int a = 0;
-    }
-    //}
+        if (_string[i] == ' ')
+        {
+            //int j = i;
+            //while (_string[j]) 
+            //{
+            //    _string[j] = _string[j + 1];
+            //    j++;
+            //}
 
+            while (_string[i] == ' ') 
+            {
+                int j = i;
+                while (_string[j]) 
+                {
+                    _string[j] = _string[j + 1];
+                    j++;
+                }
+            }
+        }
+        i++;
+    }
 
     return;
 }
 
-
+// 정수의 글자수를 반환하는 함수(ex. 12345 -> 5, 100 -> 3)
 int DigitsCount(int _Number)
 {
-    return 0;
+    int count = 1;
+    int temp = _Number;
+    while (temp >= 10)
+    {
+        temp = temp / 10;
+        count++;
+    }
+
+    return count;
 }
 
+// _Right에 _Left의 문자열을 그대로 복사하는 함수
 void StrCopy(const char* const _Left, char* _Right)
 {
+    int i = 0;
+    while (_Left[i])
+    {
+        _Right[i] = _Left[i];
+        i++;
+    }
+
     return;
 }
 
+// 정수를 문자열로 반환하는 함수
 // 가장 어려운 숙제
 void NumberToString(int _Number, char* _Right)
 {
+    int digits = DigitsCount(_Number); //6
+    int temp = _Number;
+
+    for (int i = 0; i < digits; i++)
+    {
+        _Right[digits - i - 1] = temp % 10 + 48;
+        temp = temp / 10;
+    }
+
     return;
 }
 
 
 int main()
 {
-    // 4가 리턴되어야 합니다.
     // 문자열의 마지막에 들어가는 0은 글자로 치지 않습니다.
     {
-        int Result = ChCount("ab aaa ccc ddd eee", 'w');
+        // 4가 리턴되어야 합니다. (두 번째 인자가 'a'인 경우)    
+        int Result = ChCount("ab aaa ccc ddd eee", 'a');
 
         int Result2 = ChCount(nullptr, 'w');
     }
@@ -87,8 +128,7 @@ int main()
     }
 
     {
-        // 8이 리턴되게 만들어라.
-        int Result = DigitsCount(100);
+        int Result = DigitsCount(12345);
 
         int a = 0;
     }
@@ -105,19 +145,18 @@ int main()
         char Result[256] = {};
 
         // Result = "312312";
-
         NumberToString(312312, Result);
 
-        char Ch = '0';
+
+        // Hint
+        char Ch = '0'; // 48 '0'
 
         int Value = 7;
 
-        char ChConvert = Value + 48;
+        char ChConvert = Value + 48; // 55 '7'
 
         int a = 0;
     }
-
-    std::cout << "Hello World!\n";
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
