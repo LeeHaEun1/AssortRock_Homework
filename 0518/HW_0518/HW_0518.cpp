@@ -11,8 +11,9 @@
 //    ++ChCount;
 //}
 
-// 글자수를 세는 함수입니다.
 // 위쪽 예제코드를 참고하세요
+
+// 글자수를 세는 함수입니다.
 int StringCount(char* _Arr)
 {
     int count = 0;
@@ -25,40 +26,33 @@ int StringCount(char* _Arr)
     return count;
 }
 
+// _PrevCh를 _NextCh로 바꾸는 함수
 void ChangeCh(char* _Arr, char _PrevCh, char _NextCh)
 {
-    // 1. 들어온 글자를 전부 '1'로 채워봐라.
-    //  1-1. 함수 내부에서 하지 말고
-    // for while도 생각하지 말고
-
     int i = 0;
 
-    //if (_Arr[i] == _PrevCh)
-    //{
-    //    _Arr[i] = _NextCh;
-    //}
-    //else
-    //{
-    //    i++;
-    //}
+    while (_Arr[i])
+    {
+        if (_Arr[i] == _PrevCh)
+        {
+            _Arr[i] = _NextCh;
+        }
+        i++;
+    }
 }
 
 int main()
 {
     {
-        char Arr[100] = "aa";
+        char Arr[100] = "aaa a";
 
         int Result = StringCount(Arr);
 
-        std::cout << Result;
+        //std::cout << Result;
     }
 
     {
         char Arr[100] = "aaa bbb ccc";
-
-        Arr[0] = '1';
-
-        // Arr[100] = "1111111111111";
 
         // "aaa bbb ccc"; => "aaa bbb ddd";
         ChangeCh(Arr, 'c', 'd');
