@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{f153a7fa-1f99-43de-b07a-29e407a0dbeb}</ProjectGuid>
-    <RootNamespace>My0518hw</RootNamespace>
+    <ProjectGuid>{13a1b23d-918c-473d-979a-90bbd3b60333}</ProjectGuid>
+    <RootNamespace>HW0518</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>HW_0518</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -140,10 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="hw_0518.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="0518_hw.h" />
+    <ClCompile Include="HW_0518.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
