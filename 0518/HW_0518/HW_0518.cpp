@@ -33,14 +33,14 @@ void ChangeCh(char* _Arr, char _PrevCh, char _NextCh)
 
     int i = 0;
 
-    if (_Arr[i] == _PrevCh)
-    {
-        _Arr[i] = _NextCh;
-    }
-    else
-    {
-        i++;
-    }
+    //if (_Arr[i] == _PrevCh)
+    //{
+    //    _Arr[i] = _NextCh;
+    //}
+    //else
+    //{
+    //    i++;
+    //}
 }
 
 int main()
