@@ -24,6 +24,7 @@
     <ProjectGuid>{f153a7fa-1f99-43de-b07a-29e407a0dbeb}</ProjectGuid>
     <RootNamespace>My0518hw</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>HW_0518</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -139,7 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="0518_hw.cpp" />
+    <ClCompile Include="hw_0518.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="0518_hw.h" />
