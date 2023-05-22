@@ -29,15 +29,46 @@ class Player
 // 지금 그걸 그래픽으로 표현할 방법이 없으니까.
 // 글자로 표현하겠습니다.
 
+int StrLength(const char* const _String) 
+{
+    if (_String == nullptr)
+    {
+        return -1;
+    }
+
+    int count = 0;
+    while (_String[count])
+    {
+        count++;
+    }
+    return count;
+}
+
 void StatusRender(const char* const _Name, int _Att, int _Hp)
 {
+    // [숙제1]
     // 40개로 맞춰오세요.
+    int maxDigit = 40;
+    int _NameLength = StrLength(_Name);
+
+    printf_s("%s", _Name);
+    for (int i = 0; i < maxDigit - _NameLength; i++)
+    {
+        printf_s("-");
+    }
+    printf_s("\n");
 
     // 줄바꿈이 안되고 있습니다.
-    printf_s("%s--------------------------\n", _Name);
+    //printf_s("%s--------------------------\n", _Name);
     printf_s("공격력 : %d\n", _Att);
     printf_s("체  력 : %d\n", _Hp);
-    printf_s("--------------------------\n");
+    //printf_s("--------------------------\n");
+
+    for (int i = 0; i < maxDigit; i++)
+    {
+        printf_s("-");
+    }
+    printf_s("\n");
 }
 
 void DamagePrint(const char* const _AttName, const char* const _DefName, int _Att)
@@ -63,6 +94,13 @@ int main()
     // 컴퓨터적인 측면에서 void Damage(int& _Hp, int _Att)
     // 플레이어가 몬스터를 때린다.
     // => 컴퓨터가 보면 그냥 int나 2개 내놔.
+
+
+    // 숙제1 Test
+    //{
+    //    char testStr[40] = "ewd fwe111";
+    //    std::cout << StrLength(testStr) << std::endl;
+    //}
 
     int PlayerHp = 200;
     int PlayerAtt = 100;
