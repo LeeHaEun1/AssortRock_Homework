@@ -44,6 +44,7 @@ int StrLength(const char* const _String)
     return count;
 }
 
+// 상태 UI 그리는 함수
 void StatusRender(const char* const _Name, int _Att, int _Hp)
 {
     // [숙제1]
@@ -51,6 +52,7 @@ void StatusRender(const char* const _Name, int _Att, int _Hp)
     int maxDigit = 40;
     int _NameLength = StrLength(_Name);
 
+    // 첫째 줄 (이름줄)
     printf_s("%s", _Name);
     for (int i = 0; i < maxDigit - _NameLength; i++)
     {
@@ -64,6 +66,7 @@ void StatusRender(const char* const _Name, int _Att, int _Hp)
     printf_s("체  력 : %d\n", _Hp);
     //printf_s("--------------------------\n");
 
+    // 넷째 줄
     for (int i = 0; i < maxDigit; i++)
     {
         printf_s("-");
@@ -71,12 +74,14 @@ void StatusRender(const char* const _Name, int _Att, int _Hp)
     printf_s("\n");
 }
 
+// 공격 및 데미지 상황 설명하는 함수
 void DamagePrint(const char* const _AttName, const char* const _DefName, int _Att)
 {
     printf_s("%s가 %s를 공격했습니다.\n", _AttName, _DefName);
     printf_s("%s는 %d의 데미지를 입었습니다.\n", _DefName, _Att);
 }
 
+// Hp에서 Att(공격력)만큼 실제로 제하는 함수
 void Damage(int& _Hp, int _Att)
 {
     _Hp -= _Att;
@@ -102,16 +107,18 @@ int main()
     //    std::cout << StrLength(testStr) << std::endl;
     //}
 
-    int PlayerHp = 200;
-    int PlayerAtt = 100;
-    char PlayerName[40] = "fasdhjkfasdhjkfasdhjfklasdhjkfasdhjfk";
+    int PlayerHp = 100;
+    int PlayerAtt = 10;
+    char PlayerName[40] = "Player";
 
     int MonsterHp = 100;
-    int MonsterAtt = 10;
+    int MonsterAtt = 50;
     char MonsterName[40] = "Monster";
 
     while (true)
     {
+        // [숙제2] (1, 2, 3)
+        // 1--------------------------------------------------
         // 콘솔창을 모조리 지우는 함수
         system("cls");
 
@@ -119,26 +126,41 @@ int main()
         StatusRender(PlayerName, PlayerAtt, PlayerHp);
         StatusRender(MonsterName, MonsterAtt, MonsterHp);
 
-        _getch();
-
         // 아무키나 입력할때까지 기다리는 함수
+        _getch();
 
-        DamagePrint(PlayerName, MonsterName, PlayerAtt);
+        // 2--------------------------------------------------
+        system("cls");
+
         Damage(MonsterHp, PlayerAtt);
-        // MonsterHp -= PlayerAtt;
+
+        StatusRender(PlayerName, PlayerAtt, PlayerHp);
+        StatusRender(MonsterName, MonsterAtt, MonsterHp);
+        DamagePrint(PlayerName, MonsterName, PlayerAtt);
+
+        // [숙제3]
+        if (PlayerHp <= 0 || MonsterHp <= 0)
+        {
+            break;
+        }
 
         _getch();
 
-        DamagePrint(MonsterName, PlayerName, MonsterAtt);
+        // 3--------------------------------------------------
+        system("cls");
+
         Damage(PlayerHp, MonsterAtt);
 
+        StatusRender(PlayerName, PlayerAtt, PlayerHp);
+        StatusRender(MonsterName, MonsterAtt, MonsterHp);
+        DamagePrint(MonsterName, PlayerName, MonsterAtt);
+
+        // [숙제3]
+        if (PlayerHp <= 0 || MonsterHp <= 0)
+        {
+            break;
+        }
+
         _getch();
-
-        //if (조건 만족시)
-        //{
-        //    return;
-        //}
-
-
     }
 }
