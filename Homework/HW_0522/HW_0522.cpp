@@ -29,6 +29,7 @@ class Player
 // 지금 그걸 그래픽으로 표현할 방법이 없으니까.
 // 글자로 표현하겠습니다.
 
+// 문자열의 글자수 세는 함수(숙제1 해결 위한 함수)
 int StrLength(const char* const _String) 
 {
     if (_String == nullptr)
