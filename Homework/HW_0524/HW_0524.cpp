@@ -4,11 +4,11 @@
 #include <iostream>
 #include <conio.h>
 
-// 숙제 플레이어가 화면 바깥으로 나가지 못하게 해라.
+// [숙제] 플레이어가 화면 바깥으로 나가지 못하게 해라.
+// Hint: Player class의 Input 내부만 수정하면 해결 가능, XLine과 YLine 활용
 
 const int XLine = 20;
 const int YLine = 10;
-
 
 // 이녀석은 캡슐화된 클래스라기 보다는 기본자료형
 class int4
@@ -37,7 +37,7 @@ public:
 
 };
 
-// 리스 이니셜라이저
+// 리스트 이니셜라이저
 const int4 Left = { -1, 0 };
 const int4 Right = { 1, 0 };
 const int4 Up = { 0, -1 };
@@ -56,17 +56,20 @@ public:
 
     }
 
+    // BaseCh 초기화 함수
     void Init(char _BaseCh)
     {
         BaseCh = _BaseCh;
         Clear();
     }
 
+    // 플레이어 초기 위치 설정
     void SetPixel(const int4& _Pos, char _Ch)
     {
         ArrScreen[_Pos.Y][_Pos.X] = _Ch;
     }
 
+    // BaseCh로 2차원 배열 초기화
     void Clear()
     {
         system("cls");
@@ -80,7 +83,7 @@ public:
         }
     }
 
-
+    // 실제 화면 출력
     void Print()
     {
         for (size_t y = 0; y < YLine; y++)
@@ -95,6 +98,7 @@ protected:
 
 private:
     char BaseCh = ' ';
+    // Q. 끝에 0 넣어줘야해서 +1인건가??
     char ArrScreen[YLine][XLine + 1] = {};
 };
 
@@ -143,16 +147,28 @@ public:
         switch (Select)
         {
         case 'a':
-            AddPos(Left);
+            if (Pos.X != 0)
+            {
+                AddPos(Left);
+            }
             break;
         case 'd':
-            AddPos(Right);
+            if (Pos.X != XLine - 1)
+            {
+                AddPos(Right);
+            }
             break;
         case 'w':
-            AddPos(Up);
+            if (Pos.Y != 0)
+            {
+                AddPos(Up);
+            }
             break;
         case 's':
-            AddPos(Down);
+            if (Pos.Y != YLine - 1)
+            {
+                AddPos(Down);
+            }
             break;
         default:
             break;
@@ -162,9 +178,6 @@ public:
 protected:
 
 private:
-
-
-
     int4 Pos;
 };
 
