@@ -34,7 +34,6 @@ public:
         Z += _Other.Z;
         W += _Other.W;
     }
-
 };
 
 // 리스트 이니셜라이저
@@ -94,7 +93,6 @@ public:
     }
 
 protected:
-
 
 private:
     char BaseCh = ' ';
@@ -207,6 +205,4 @@ int main()
 
         MainPlayer.Input();
     }
-
-
 }
