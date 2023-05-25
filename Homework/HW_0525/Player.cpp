@@ -44,6 +44,6 @@ bool Player::IsDeath()
 	return Hp <= 0;
 }
 
-
+// [변수도 .cpp에서 구현 시도 시 Error]
 // E0246: 비정적 데이터 멤버는 해당 클래스 외부에서 정의할 수 없습니다.
 // char Player::Name[40] = "Player";
