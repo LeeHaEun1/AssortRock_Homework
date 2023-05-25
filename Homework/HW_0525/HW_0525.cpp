@@ -6,10 +6,18 @@
 // 헤더와 cpp를 분리해서 이곳에서 동일하게 실행되게 만들어 보세요.
 
 #include <iostream>
+#include "StringCount.h"
+#include "Player.h"
+#include "Monster.h"
+#include "FightZone.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	Player NewPlayer;
+	Monster NewMonster;
+
+	FightZone FZone;
+	FZone.Fight(NewPlayer, NewMonster);
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
