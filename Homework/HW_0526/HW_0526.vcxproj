@@ -130,11 +130,13 @@
     <ClCompile Include="ConsoleScreen.cpp" />
     <ClCompile Include="HW_0526.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleScreen.h" />
     <ClInclude Include="int4.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Wall.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

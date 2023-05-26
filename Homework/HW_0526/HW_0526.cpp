@@ -13,6 +13,7 @@
 #include "int4.h"
 #include "ConsoleScreen.h"
 #include "Player.h"
+#include "Wall.h"
 
 int main()
 {
@@ -20,13 +21,16 @@ int main()
     Screen.Init('*');
 
     Player MainPlayer;
-    // 클래스의경우에는 
     MainPlayer.SetPos({ 10, 5 });
+
+    Wall Wall;
+    Wall.SetPos({ 10, 3 });
 
     while (true)
     {
         Screen.Clear();
         Screen.SetPixel(MainPlayer.GetPos(), 'a');
+        Screen.SetPixel(Wall.GetPos(), 'O');
         Screen.Print();
 
         MainPlayer.Input();
