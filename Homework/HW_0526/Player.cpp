@@ -14,6 +14,8 @@ void Player::Input()
 {
     char Select = (char)_getch();
 
+    int4 NextPos = { 0, 0 };
+
     switch (Select)
     {
     case 'a':

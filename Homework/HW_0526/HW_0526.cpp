@@ -35,7 +35,7 @@ int main()
 
     int Count = 0;
 
-    //Wall ArrWall[10];
+    Wall ArrWall[20];
     //Wall* PtrWall = ArrWall;
 
     while (true)
@@ -43,26 +43,30 @@ int main()
         Screen.Clear();
         Screen.SetPixel(MainPlayer.GetPos(), 'a');
 
-
-        for (size_t i = 0; i < 5; i++)
+        for (int i = 0; i < 20; i++)
         {
             // int4 WallPos = PtrWall.GetPos();
             // int4 WallPos = ArrWall[i].GetPos();
-            int4 WallPos = { 5 + Count, i };
-            Screen.SetPixel(WallPos, '0');
+            // 
+            //int4 WallPos = { 5 + Count, i };
+
+            ArrWall[i].SetPos({ i, 1 });
+            Screen.SetPixel(ArrWall[i].GetPos(), '0');
         }
-        ++Count;
+        //++Count;
 
         Screen.Print();
 
-        if (0 != _kbhit())
-        {
-            //MainPlayer.Input(&Screen); // 강사님 풀이가 아니라 내 숙제 기반으로 작업해서 발생한 차이..
-            MainPlayer.Input();
-        }
-        // 1000이면 1초입니다.
-        // 1초 동안 정지합니다.
-        Sleep(200);
+        MainPlayer.Input();
+        
+        //if (0 != _kbhit())
+        //{
+        //    //MainPlayer.Input(&Screen); // 강사님 풀이가 아니라 내 숙제 기반으로 작업해서 발생한 차이..
+        //    //MainPlayer.Input();
+        //}
+        //// 1000이면 1초입니다.
+        //// 1초 동안 정지합니다.
+        //Sleep(200);
     }
 }
 
