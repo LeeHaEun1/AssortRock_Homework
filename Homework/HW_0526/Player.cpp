@@ -2,6 +2,9 @@
 #include <conio.h>
 #include "Player.h"
 
+// #include "Wall.h"해서 Wall 10개의 위치를 이용하는 방식으로 해결..?!
+// ADWS(이동)했을때 Wall의 위치가 된다면 이동하지 않는 조건 추가
+
 const int4 Left = { -1, 0 };
 const int4 Right = { 1, 0 };
 const int4 Up = { 0, -1 };
