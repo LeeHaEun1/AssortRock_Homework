@@ -57,12 +57,12 @@ public:
 
     // BaseCh 초기화 함수
     void Init(char _BaseCh)
+
+    // 플레이어 초기 위치 설정
     {
         BaseCh = _BaseCh;
         Clear();
     }
-
-    // 플레이어 초기 위치 설정
     void SetPixel(const int4& _Pos, char _Ch)
     {
         ArrScreen[_Pos.Y][_Pos.X] = _Ch;
