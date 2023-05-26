@@ -1,5 +1,9 @@
 #pragma once
 
+const int XLine = 20;
+const int YLine = 10;
+
+// 이녀석은 캡슐화된 클래스라기 보다는 기본자료형
 class int4
 {
 public:
@@ -24,4 +28,3 @@ public:
         W += _Other.W;
     }
 };
-

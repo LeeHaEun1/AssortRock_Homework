@@ -1,9 +1,6 @@
 #pragma once
 #include "int4.h"
 
-const int XLine = 20;
-const int YLine = 10;
-
 class ConsoleScreen : public int4
 {
 public:
@@ -34,4 +31,3 @@ private:
     // Q. 끝에 0 넣어줘야해서 +1인건가??
     char ArrScreen[YLine][XLine + 1] = {};
 };
-

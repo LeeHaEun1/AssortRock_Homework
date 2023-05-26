@@ -129,7 +129,6 @@
   <ItemGroup>
     <ClCompile Include="ConsoleScreen.cpp" />
     <ClCompile Include="HW_0526.cpp" />
-    <ClCompile Include="int4.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>

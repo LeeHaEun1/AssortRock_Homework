@@ -10,10 +10,27 @@
 // 3. 장애물을 통과 못하게 하기.
 
 #include <iostream>
+#include "int4.h"
+#include "ConsoleScreen.h"
+#include "Player.h"
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
+    ConsoleScreen Screen;
+    Screen.Init('*');
+
+    Player MainPlayer;
+    // 클래스의경우에는 
+    MainPlayer.SetPos({ 10, 5 });
+
+    while (true)
+    {
+        Screen.Clear();
+        Screen.SetPixel(MainPlayer.GetPos(), 'a');
+        Screen.Print();
+
+        MainPlayer.Input();
+    }
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
