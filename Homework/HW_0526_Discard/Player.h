@@ -1,6 +1,8 @@
 #pragma once
 #include "int4.h"
 
+class ConsoleScreen;
+class Wall;
 class Player : public int4
 {
 public:
@@ -12,6 +14,12 @@ public:
     void AddPos(const int4& _Pos)
     {
         Pos += _Pos;
+    }
+
+    int4 AddPosResult(const int4& _Pos)
+    {
+        Pos += _Pos;
+        return Pos;
     }
 
     void SetPos(const int4& _Pos)
@@ -26,7 +34,9 @@ public:
 
     Player(const Player&) = delete;
 
-    void Input();
+    bool IsNextToWall(Wall* _Wall);
+
+    void Input(ConsoleScreen* _Screen, Wall* _Wall);
     
 
 protected:

@@ -14,6 +14,16 @@ public:
 		Pos = _Pos;
 	}
 
+	int4 AddPos(const int4& _Pos)
+	{
+		Pos += _Pos;
+		return Pos;
+	}
+
+	/*bool IsNextToWall(const int4& _Pos);*/
+
+	char wallChar = 'O';
+
 private:
 	int4 Pos;
 };

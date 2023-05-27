@@ -13,6 +13,11 @@ void ConsoleScreen::SetPixel(const int4& _Pos, char _Ch)
     ArrScreen[_Pos.Y][_Pos.X] = _Ch;
 }
 
+char ConsoleScreen::GetPixel(const int4& _Pos)
+{
+    return ArrScreen[_Pos.Y][_Pos.X];
+}
+
 void ConsoleScreen::Clear()
 {
     system("cls");
@@ -33,4 +38,29 @@ void ConsoleScreen::Print()
         printf_s(ArrScreen[y]);
         printf_s("\n");
     }
+}
+
+bool ConsoleScreen::IsScreenOut(const int4& _Pos) const
+{
+    if (0 > _Pos.X)
+    {
+        return true;
+    }
+
+    if (0 > _Pos.Y)
+    {
+        return true;
+    }
+
+    if (XLine <= _Pos.X)
+    {
+        return true;
+    }
+
+    if (YLine <= _Pos.Y)
+    {
+        return true;
+    }
+
+    return false;
 }

@@ -43,21 +43,38 @@ int main()
         Screen.Clear();
         Screen.SetPixel(MainPlayer.GetPos(), 'a');
 
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 10; i++)
         {
             // int4 WallPos = PtrWall.GetPos();
             // int4 WallPos = ArrWall[i].GetPos();
             // 
             //int4 WallPos = { 5 + Count, i };
 
-            ArrWall[i].SetPos({ i, 1 });
-            Screen.SetPixel(ArrWall[i].GetPos(), '0');
+            ArrWall[i].SetPos({ i*2, 1 });
+            Screen.SetPixel(ArrWall[i].GetPos(), 'O');
+            //MainPlayer.IsNextToWall(ArrWall[i]);
         }
         //++Count;
 
         Screen.Print();
 
-        MainPlayer.Input();
+        /*if (0 != _kbhit())
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                if (MainPlayer.IsNextToWall(ArrWall[i].GetPos()) == false)
+                {
+                    MainPlayer.Input();
+                }
+            }
+        }*/
+        //MainPlayer.Input(&Screen, &ArrWall[20]);
+
+
+        for (int i = 0; i < 10; i++)
+        {
+            MainPlayer.Input(&Screen, &ArrWall[i]);
+        }
         
         //if (0 != _kbhit())
         //{

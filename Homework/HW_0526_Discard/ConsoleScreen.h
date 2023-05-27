@@ -15,12 +15,15 @@ public:
     // 특정 위치에 특정 문자 삽입
     void SetPixel(const int4& _Pos, char _Ch);
 
+    char GetPixel(const int4& _Pos);
+
     // BaseCh로 2차원 배열 초기화
     void Clear();
     
-
     // 실제 화면 출력
     void Print();
+
+    bool IsScreenOut(const int4& _Pos) const;
     
 
 protected:
