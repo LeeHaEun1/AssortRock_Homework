@@ -2,16 +2,18 @@
 #include <conio.h>
 #include <Windows.h>
 
+// [숙제]
 // 1. 파일 정리
-// 2. 10개의 장애물 배치 class Wall
+
+// 2. 10개의 장애물 배치 class Wall (완료)
 //    Player 
 //    Wall 
 //    같은 클래스를 상속받아서 만들어져야 한다.
-// 
+
 // 3. 장애물을 통과 못하게 하기.
 
 // 4. 플레이어가 어떠한 키를 누르면 플레이어 위치에서
-//    총알 1발이 발사되게 만드세요.
+//    총알 1발이 발사되게 만드세요. (완료)
 
 // 5. 그 총알 1발에 벽이 닿으면 벽이 없어지게 만드세요.
 
@@ -51,7 +53,17 @@ public:
         return Return;
     }
 
-
+    bool operator==(const int4& _Other)
+    {
+        if (X == _Other.X && Y == _Other.Y && Z == _Other.Z && W == _Other.W)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 };
 
 const int4 Left = { -1, 0 };
@@ -248,16 +260,31 @@ public:
         Pos = _Pos;
     }
 
-    void Shoot(const int4& _Pos)
-    {
-        Pos += Up;
-    }
-
     bool IsShooting = false;
+    bool HitWall = false; 
 
 private:
     int4 Pos;
 };
+
+
+class Wall
+{
+public:
+    int4 GetPos() const
+    {
+        return Pos;
+    }
+
+    void SetPos(const int4& _Pos)
+    {
+        Pos = _Pos;
+    }
+
+private:
+    int4 Pos;
+};
+
 
 int main()
 {
@@ -267,39 +294,48 @@ int main()
     Player MainPlayer;
     MainPlayer.SetPos({ 10, 5 });
 
+    Wall Wall[10];
+
     Bullet Bullet;
-    //Bullet.IsShooting = true;
 
-    int Count = 0;
-
-    //Wall ArrWall[10];
-    //Wall* PtrWall = ArrWall;
+    //int4 int0 = { 0, 1 };
+    //int4 int1 = { 0, 1 };
 
     while (true)
     {
+        // == 기호는 정상 작동
+        //if (int0 == int1)
+        //{
+        //    printf_s("same");
+        //}
+
         Screen.Clear();
         Screen.SetPixel(MainPlayer.GetPos(), 'a');
 
-        if (Bullet.IsShooting == true && Screen.IsScreenOut(Bullet.GetPos() + Up) == false)
+        // 벽 설치
+        for (int i = 0; i < 10; i++)
         {
-            Screen.SetPixel(Bullet.GetPos(), 'B');
-            Bullet.SetPos(Bullet.GetPos() + Up);
+            Wall[i].SetPos({ i * 2, 2 });
+            Screen.SetPixel(Wall[i].GetPos(), 'O');
         }
 
-       /* if ((char)_getch()==' ')
-        {*/
-            //Screen.SetPixel(Bullet.GetPos(), 'B');
-        //}
+        // 총알이 벽에 맞았는지 확인 (for문)
+        for (int i = 0; i < 10; i++)
+        {
+            if (Wall[i].GetPos() == Bullet.GetPos())
+            {
+                Bullet.HitWall = true;
+                Screen.SetPixel(Wall[i].GetPos(), '*');
+            }
+        }
 
-        //for (size_t i = 0; i < 5; i++)
-        //{
+        // 총알 발사
+        if (Bullet.IsShooting == true && Screen.IsScreenOut(Bullet.GetPos()+Up) == false && Bullet.HitWall == false)
+        {
+            Bullet.SetPos(Bullet.GetPos() + Up);
+            Screen.SetPixel(Bullet.GetPos(), 'B');
+        }
 
-        //    // int4 WallPos = PtrWall.GetPos();
-        //    // int4 WallPos = ArrWall[i].GetPos();
-        //    int4 WallPos = { 5 + Count, i };
-        //    Screen.SetPixel(WallPos, '0');
-        //}
-        //// ++Count;
 
         Screen.Print();
 
@@ -308,16 +344,17 @@ int main()
         {
             MainPlayer.Input(&Screen);
             
+            // Key 'B' 클릭 시 총알 발사
             if ((char)_getch() == 'b')
             {
                 Bullet.IsShooting = true;
-                Bullet.SetPos(MainPlayer.GetPos() + Up);
+                Bullet.SetPos(MainPlayer.GetPos());
             }
         }
 
 
         // 1000이면 1초입니다.
         // 1초 동안 정지합니다.
-        Sleep(50);
+        Sleep(200);
     }
 }
