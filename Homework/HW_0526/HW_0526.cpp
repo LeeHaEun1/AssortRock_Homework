@@ -315,7 +315,7 @@ int main()
         // 벽 설치
         for (int i = 0; i < 10; i++)
         {
-            Wall[i].SetPos({ i * 2, 2 });
+            Wall[i].SetPos({ i * 2, 1});
             Screen.SetPixel(Wall[i].GetPos(), 'O');
         }
 
@@ -326,6 +326,8 @@ int main()
             {
                 Bullet.HitWall = true;
                 Screen.SetPixel(Wall[i].GetPos(), '*');
+                Screen.SetPixel(Bullet.GetPos(), '*');
+                std::cout << "hitwall" << std::endl;
             }
         }
 
@@ -336,9 +338,7 @@ int main()
             Screen.SetPixel(Bullet.GetPos(), 'B');
         }
 
-
         Screen.Print();
-
 
         if (0 != _kbhit())
         {
@@ -351,7 +351,6 @@ int main()
                 Bullet.SetPos(MainPlayer.GetPos());
             }
         }
-
 
         // 1000이면 1초입니다.
         // 1초 동안 정지합니다.
