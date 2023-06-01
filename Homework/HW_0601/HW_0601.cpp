@@ -31,6 +31,21 @@ private:
 		DataType Value;
 		ListNode* Prev = nullptr;
 		ListNode* Next = nullptr;
+
+		// [숙제2]
+		~ListNode()
+		{
+			if (Prev != nullptr)
+			{
+				delete[] Prev;
+				Prev = nullptr;
+			}
+			if (Next != nullptr)
+			{
+				delete[] Next;
+				Next = nullptr;
+			}
+		}
 	};
 
 
@@ -75,6 +90,16 @@ public:
 		{
 			return CurNode->Value;
 		}
+
+		// [숙제]
+		//~iterator()
+		//{
+		//	if (CurNode != nullptr)
+		//	{
+		//		delete CurNode;
+		//		CurNode = nullptr;
+		//	}
+		//}
 	};
 
 	HList()
@@ -100,6 +125,13 @@ public:
 
 		NewNode->Next = EndNode;
 		NewNode->Prev = PrevNode;
+
+		// [숙제2]
+		//if (NewNode != nullptr)
+		//{
+		//	delete NewNode;
+		//	NewNode = nullptr;
+		//}
 	}
 
 	// [숙제1]
@@ -117,6 +149,13 @@ public:
 		// NewNode에서 NewNode의 전후 요소들에 연결
 		NewNode->Next = NextNode;
 		NewNode->Prev = StartNode;
+
+		// [숙제2]
+		//if (NewNode != nullptr)
+		//{
+		//	delete NewNode;
+		//	NewNode = nullptr;
+		//}
 	}
 
 	iterator erase(const iterator& _Iter)
@@ -157,6 +196,21 @@ public:
 	iterator end()
 	{
 		return iterator(EndNode);
+	}
+
+	// [숙제2]
+	~HList()
+	{
+		if (StartNode != nullptr)
+		{
+			delete StartNode;
+			StartNode = nullptr;
+		}
+		if (EndNode != nullptr)
+		{
+			delete EndNode;
+			EndNode = nullptr;
+		}
 	}
 
 private:
