@@ -102,6 +102,23 @@ public:
 		NewNode->Prev = PrevNode;
 	}
 
+	// [숙제1]
+	void push_front(const DataType& _Data)
+	{
+		ListNode* NewNode = new ListNode();
+		NewNode->Value = _Data;
+
+		ListNode* NextNode = StartNode->Next;
+
+		// NewNode의 전후 요소들에서 NewNode에 연결
+		NextNode->Prev = NewNode;
+		StartNode->Next = NewNode;
+
+		// NewNode에서 NewNode의 전후 요소들에 연결
+		NewNode->Next = NextNode;
+		NewNode->Prev = StartNode;
+	}
+
 	iterator erase(const iterator& _Iter)
 	{
 		ListNode* Node = _Iter.CurNode;
@@ -187,6 +204,11 @@ int main()
 		for (int i = 0; i < 10; i++)
 		{
 			NewList.push_back(i);
+		}
+
+		for (int i = 0; i < 10; i++)
+		{
+			NewList.push_front(i);
 		}
 
 		// 내가 5번째부터 시작한다
