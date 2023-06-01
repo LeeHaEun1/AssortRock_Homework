@@ -189,12 +189,11 @@ int main()
 		// 릭을 해결하는 순간 터질겁니다.
 		// 정상적인 복사가 이루어지게 하세요.
 		// LHE : E1776 삭제된 함수. 참조할 수 없습니다?
-		Arr0 = Arr; 
+		//Arr0 = Arr; 
 
 		for (size_t i = 0; i < Arr0.size(); i++)
 		{
 			std::cout << Arr0[i] << std::endl;
 		}
-
 	}
 }
