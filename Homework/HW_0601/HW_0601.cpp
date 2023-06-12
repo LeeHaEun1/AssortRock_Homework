@@ -33,19 +33,19 @@ private:
 		ListNode* Next = nullptr;
 
 		// [숙제2]
-		~ListNode()
-		{
-			if (Prev != nullptr)
-			{
-				delete[] Prev;
-				Prev = nullptr;
-			}
-			if (Next != nullptr)
-			{
-				delete[] Next;
-				Next = nullptr;
-			}
-		}
+		//~ListNode()
+		//{
+		//	if (Prev != nullptr)
+		//	{
+		//		delete[] Prev;
+		//		Prev = nullptr;
+		//	}
+		//	if (Next != nullptr)
+		//	{
+		//		delete[] Next;
+		//		Next = nullptr;
+		//	}
+		//}
 	};
 
 
@@ -180,7 +180,7 @@ public:
 		PrevNode->Next = NextNode;
 		NextNode->Prev = PrevNode;
 
-		if (nullptr == Node)
+		if (nullptr != Node)
 		{
 			delete Node;
 		}
@@ -201,15 +201,30 @@ public:
 	// [숙제2]
 	~HList()
 	{
-		if (StartNode != nullptr)
+		//if (StartNode != nullptr)
+		//{
+		//	delete StartNode;
+		//	StartNode = nullptr;
+		//}
+		//if (EndNode != nullptr)
+		//{
+		//	delete EndNode;
+		//	EndNode = nullptr;
+		//}
+		if (StartNode == nullptr)
 		{
-			delete StartNode;
-			StartNode = nullptr;
+			return;
 		}
-		if (EndNode != nullptr)
+
+		ListNode* ptr = StartNode;
+		while (ptr != nullptr)
 		{
-			delete EndNode;
-			EndNode = nullptr;
+			ListNode* next = ptr->Next;
+
+			delete ptr;
+			ptr = nullptr;
+
+			ptr = next;
 		}
 	}
 
